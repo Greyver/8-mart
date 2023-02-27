@@ -57,6 +57,17 @@ walk_left = [
         "Images\Heroes\Left\image_part_126.png").convert_alpha(),
 ]
 
+opponent_walk_left = [
+    pygame.image.load("Images\Opponent\image_part_118.png").convert_alpha(),
+    pygame.image.load("Images\Opponent\image_part_119.png").convert_alpha(),
+    pygame.image.load("Images\Opponent\image_part_120.png").convert_alpha(),
+    pygame.image.load("Images\Opponent\image_part_121.png").convert_alpha(),
+    pygame.image.load("Images\Opponent\image_part_122.png").convert_alpha(),
+    pygame.image.load("Images\Opponent\image_part_123.png").convert_alpha(),
+    pygame.image.load("Images\Opponent\image_part_124.png").convert_alpha(),
+    pygame.image.load("Images\Opponent\image_part_125.png").convert_alpha(),
+    pygame.image.load("Images\Opponent\image_part_126.png").convert_alpha(),
+]
 
 opponent = pygame.image.load(
     "Images\Opponent\image_part_118.png").convert_alpha()
@@ -83,9 +94,11 @@ restart_label_rect = restart_label.get_rect(topleft=(350, 340))
 
 gameplay = True
 
+nomer_anim_vraga = 0
+
 bg_sound = pygame.mixer.Sound('Sounds\Action 3 (Loop).mp3')
 bg_sound.play()
-#! начало цикла
+#! начало цикла screen.blit(walk_left[player_anim_count], (player_x, player_y))
 running = True
 while running:
 
@@ -97,10 +110,14 @@ while running:
         # walk_left[0].get_rect(topleft=(player_x, player_y))
         player_rect = walk_left[0].get_rect(topleft=(player_x, player_y))
         # opponent_rect = opponent.get_rect(topleft=(opponent_x, 490))
+
         if opponent_list_in_game:
             for (i, el) in enumerate(opponent_list_in_game):
-                screen.blit(opponent, el)
-                el.x -= 10
+                if nomer_anim_vraga == 9:
+                    nomer_anim_vraga = 0
+                screen.blit(opponent_walk_left[nomer_anim_vraga], el)
+                nomer_anim_vraga += 1
+                el.x -= 5
 
                 if el.x < -10:
                     opponent_list_in_game.pop(i)
@@ -142,9 +159,6 @@ while running:
             player_anim_count += 1
         # screen.blit(walk_right[player_anim_count], (0,490))
 
-        bg_x -= 5
-        if bg_x == -900:
-            bg_x = 0
     else:
         screen.fill((0, 0, 0))
         screen.blit(lose_label, (335, 260))
