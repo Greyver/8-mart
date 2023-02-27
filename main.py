@@ -59,7 +59,7 @@ walk_left = [
 
 
 opponent = pygame.image.load(
-    "Images\Heroes\Left\image_part_118.png").convert_alpha()
+    "Images\Opponent\image_part_118.png").convert_alpha()
 
 opponent_list_in_game = []
 
@@ -112,8 +112,10 @@ while running:
         keys = pygame.key.get_pressed()
         if keys[pygame.K_LEFT]:
             screen.blit(walk_left[player_anim_count], (player_x, player_y))
-        else:
+        elif keys[pygame.K_RIGHT]:
             screen.blit(walk_right[player_anim_count], (player_x, player_y))
+        else:
+            screen.blit(walk_right[0], (player_x, player_y))
 
         if keys[pygame.K_LEFT] and player_x > 0:
             player_x -= player_speed
