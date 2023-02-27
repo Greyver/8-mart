@@ -9,57 +9,57 @@ pygame.init()
 screen = pygame.display.set_mode((900, 600))
 pygame.display.set_caption("Тест")
 # ? используется для пнг картинок, для других форматов просто convert()
-icon = pygame.image.load("2D_SHOOT\Images\logo.png").convert_alpha()
+icon = pygame.image.load("Images\logo.png").convert_alpha()
 pygame.display.set_icon(icon)
 
-bg = pygame.image.load("2D_SHOOT\Images\lfone.png").convert_alpha()
+bg = pygame.image.load("Images\lfone.png").convert_alpha()
 
 walk_right = [
     pygame.image.load(
-        "2D_SHOOT\Images\Heroes\Right\image_part_144.png").convert_alpha(),
+        "Images\Heroes\Right\image_part_144.png").convert_alpha(),
     pygame.image.load(
-        "2D_SHOOT\Images\Heroes\Right\image_part_145.png").convert_alpha(),
+        "Images\Heroes\Right\image_part_145.png").convert_alpha(),
     pygame.image.load(
-        "2D_SHOOT\Images\Heroes\Right\image_part_146.png").convert_alpha(),
+        "Images\Heroes\Right\image_part_146.png").convert_alpha(),
     pygame.image.load(
-        "2D_SHOOT\Images\Heroes\Right\image_part_147.png").convert_alpha(),
+        "Images\Heroes\Right\image_part_147.png").convert_alpha(),
     pygame.image.load(
-        "2D_SHOOT\Images\Heroes\Right\image_part_148.png").convert_alpha(),
+        "Images\Heroes\Right\image_part_148.png").convert_alpha(),
     pygame.image.load(
-        "2D_SHOOT\Images\Heroes\Right\image_part_149.png").convert_alpha(),
+        "Images\Heroes\Right\image_part_149.png").convert_alpha(),
     pygame.image.load(
-        "2D_SHOOT\Images\Heroes\Right\image_part_150.png").convert_alpha(),
+        "Images\Heroes\Right\image_part_150.png").convert_alpha(),
     pygame.image.load(
-        "2D_SHOOT\Images\Heroes\Right\image_part_151.png").convert_alpha(),
+        "Images\Heroes\Right\image_part_151.png").convert_alpha(),
     pygame.image.load(
-        "2D_SHOOT\Images\Heroes\Right\image_part_152.png").convert_alpha(),
+        "Images\Heroes\Right\image_part_152.png").convert_alpha(),
 
 ]
 
 walk_left = [
     pygame.image.load(
-        "2D_SHOOT\Images\Heroes\Left\image_part_118.png").convert_alpha(),
+        "Images\Heroes\Left\image_part_118.png").convert_alpha(),
     pygame.image.load(
-        "2D_SHOOT\Images\Heroes\Left\image_part_119.png").convert_alpha(),
+        "Images\Heroes\Left\image_part_119.png").convert_alpha(),
     pygame.image.load(
-        "2D_SHOOT\Images\Heroes\Left\image_part_120.png").convert_alpha(),
+        "Images\Heroes\Left\image_part_120.png").convert_alpha(),
     pygame.image.load(
-        "2D_SHOOT\Images\Heroes\Left\image_part_121.png").convert_alpha(),
+        "Images\Heroes\Left\image_part_121.png").convert_alpha(),
     pygame.image.load(
-        "2D_SHOOT\Images\Heroes\Left\image_part_122.png").convert_alpha(),
+        "Images\Heroes\Left\image_part_122.png").convert_alpha(),
     pygame.image.load(
-        "2D_SHOOT\Images\Heroes\Left\image_part_123.png").convert_alpha(),
+        "Images\Heroes\Left\image_part_123.png").convert_alpha(),
     pygame.image.load(
-        "2D_SHOOT\Images\Heroes\Left\image_part_124.png").convert_alpha(),
+        "Images\Heroes\Left\image_part_124.png").convert_alpha(),
     pygame.image.load(
-        "2D_SHOOT\Images\Heroes\Left\image_part_125.png").convert_alpha(),
+        "Images\Heroes\Left\image_part_125.png").convert_alpha(),
     pygame.image.load(
-        "2D_SHOOT\Images\Heroes\Left\image_part_126.png").convert_alpha(),
+        "Images\Heroes\Left\image_part_126.png").convert_alpha(),
 ]
 
 
 opponent = pygame.image.load(
-    "2D_SHOOT\Images\Heroes\Left\image_part_118.png").convert_alpha()
+    "Images\Heroes\Left\image_part_118.png").convert_alpha()
 
 opponent_list_in_game = []
 
@@ -76,14 +76,14 @@ pygame.time.set_timer(opponent_timer, 3500)
 is_jump = False
 jump_count = 7
 
-label = pygame.font.Font("2D_SHOOT\Fonts\jbeer-money12.ttf", 60)
+label = pygame.font.Font("Fonts\jbeer-money12.ttf", 60)
 lose_label = label.render("YOU DIED", False, (255, 0, 0))
 restart_label = label.render("RESTART", False, (0, 255, 0))
 restart_label_rect = restart_label.get_rect(topleft=(350, 340))
 
 gameplay = True
 
-bg_sound = pygame.mixer.Sound('2D_SHOOT\Sounds\Action 3 (Loop).mp3')
+bg_sound = pygame.mixer.Sound('Sounds\Action 3 (Loop).mp3')
 bg_sound.play()
 #! начало цикла
 running = True
