@@ -14,6 +14,8 @@ pygame.display.set_icon(icon)
 
 bg = pygame.image.load("Images\lfone.png").convert_alpha()
 
+present = pygame.image.load("Images\present.png").convert_alpha()
+
 walk_right = [
     pygame.image.load(
         "Images\Heroes\Right\image_part_144.png").convert_alpha(),
@@ -82,7 +84,7 @@ player_x = 100
 player_y = 490
 
 opponent_timer = pygame.USEREVENT + 1
-pygame.time.set_timer(opponent_timer, 3500)
+pygame.time.set_timer(opponent_timer, 1500)
 
 is_jump = False
 jump_count = 7
@@ -96,6 +98,9 @@ gameplay = True
 
 nomer_anim_vraga = 0
 
+vusota_box = 1
+flag = True
+
 bg_sound = pygame.mixer.Sound('Sounds\Action 3 (Loop).mp3')
 bg_sound.play()
 #! начало цикла screen.blit(walk_left[player_anim_count], (player_x, player_y))
@@ -105,6 +110,15 @@ while running:
     screen.blit(bg, (bg_x, 0))
     screen.blit(bg, (bg_x + 900, 0))
 
+    screen.blit(present, (845, 395 - vusota_box))
+    if flag:
+        vusota_box += 1
+    if flag == False:
+        vusota_box -= 1
+    if vusota_box == 10:
+        flag = False
+    if vusota_box == 0:
+        flag = True
     if gameplay:
         # ? создаються квадраты вокруг персонажей для отслеживания прикосновений
         # walk_left[0].get_rect(topleft=(player_x, player_y))
