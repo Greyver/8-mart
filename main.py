@@ -15,6 +15,9 @@ pygame.display.set_icon(icon)
 bg = pygame.image.load("Images\lfone.png").convert_alpha()
 
 present = pygame.image.load("Images\present.png").convert_alpha()
+present_rect = present.get_rect(topleft=(865, 375))
+
+demon = pygame.image.load("Images\demon.jpg").convert_alpha()
 
 walk_right = [
     pygame.image.load(
@@ -91,6 +94,8 @@ jump_count = 7
 
 label = pygame.font.Font("Fonts\jbeer-money12.ttf", 60)
 lose_label = label.render("YOU DIED", False, (255, 0, 0))
+mart = label.render(
+    "Congratulations on International Women's Day!", False, (255, 0, 0))
 restart_label = label.render("RESTART", False, (0, 255, 0))
 restart_label_rect = restart_label.get_rect(topleft=(350, 340))
 
@@ -100,6 +105,10 @@ nomer_anim_vraga = 0
 
 vusota_box = 1
 flag = True
+
+conec = False
+
+demon_flag = True
 
 bg_sound = pygame.mixer.Sound('Sounds\Action 3 (Loop).mp3')
 bg_sound.play()
@@ -125,7 +134,7 @@ while running:
         player_rect = walk_left[0].get_rect(topleft=(player_x, player_y))
         # opponent_rect = opponent.get_rect(topleft=(opponent_x, 490))
 
-        if opponent_list_in_game:
+        if opponent_list_in_game and demon_flag:
             for (i, el) in enumerate(opponent_list_in_game):
                 if nomer_anim_vraga == 9:
                     nomer_anim_vraga = 0
@@ -139,7 +148,11 @@ while running:
                 if player_rect.colliderect(el.inflate(-70, -70)):
                     print("YOU DIED:" + str(player_x))
                     gameplay = False
-
+        if player_rect.colliderect(present_rect.inflate(50, 50)) or conec:
+            screen.blit(demon, (0, 0))
+            conec = True
+            screen.blit(mart, (0, 520))
+            demon_flag = False
         keys = pygame.key.get_pressed()
         if keys[pygame.K_LEFT]:
             screen.blit(walk_left[player_anim_count], (player_x, player_y))
